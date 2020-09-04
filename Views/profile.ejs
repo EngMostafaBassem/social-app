@@ -24,10 +24,10 @@
                 <ul class="navbar-nav m-auto ">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="home.html">Home</a>
+                        <a class="nav-link" href="/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profile.html">My Profile</a>
+                        <a class="nav-link" href="/profile">My Profile</a>
                     </li>
 
                 </ul>
@@ -39,13 +39,13 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                            <img width="40" src="images/man.jpg" alt="">
-                            Ahmed
+                           <img width="40" src="images/man.jpg" alt="">
+                           <%= user.userName %>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="acount_setting.html">Account Setting</a>
+                            <a class="dropdown-item" href="/account">Account Setting</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="index.html">Logout</a>
+                            <a class="dropdown-item" href="/logout">Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -56,22 +56,41 @@
 
 
 
-    <div class="container mt-5 pt-5">
+    <div class="cover">
+
+    </div>
+
+    <div class="container">
         <div class="row">
-            <div class="col-md-8 m-auto card p-5">
-                <div class="">
-                    <h3>Account Setting</h3>
-                    <hr>
-                    <form action="">
-                        <input placeholder="Enter Old Password" type="text" class="form-control my-2">
-                        <input placeholder="New Password" type="text" class="form-control my-2">
-                        <input placeholder="Repeat Password" type="text" class="form-control my-2">
-                        <button class="btn btn-info mt-3">Save Setting</button>
-                    </form>
+            <div class="col-md-4 ">
+                <div class="person card pb-5 px-5  text-center">
+                    <img src="images/man.jpg" width="250" alt="">
                 </div>
+            </div>
+            <div class="col-md-8 pt-4">
+                <h2><%= user.firstName %> &nbsp; <%=user.lastName %></h2>
+                <h4 class="text-muted">   <%=user.jobRole %></h4>
+                  <% for( let i = 0; i < blogs.length; i++ ) { %>
+                    <div class="post card p-4 auto">
+                        <div class="media">
+                            <img src="images/man.jpg" width="60" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0"><%= blogs[i].user.firstName %> &nbsp; <%= blogs[i].user.lastName %></h5>
+                                <%= blogs[i].createdAt.toISOString()  %>
+                            </div>
+                        </div>
+                        <hr>
+                        <h3><%= blogs[i].user.jobRole %></h3>
+                        <p class="pt-4"><%=blogs[i].content %> </p>
+    
+                    </div>
+                  <% } %>
+             
+               
             </div>
         </div>
     </div>
+
 
 
 
