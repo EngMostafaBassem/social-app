@@ -6,6 +6,7 @@ const app=express()
 const userRouter=require('./Routes/user.routes.js')
 const blogRoutes=require('./Routes/blog.routes.js')
 const session=require('express-session')
+const { env } = require('process')
 
 
 /*Basic Setup*/
@@ -29,4 +30,4 @@ connect.then(db=>{
 app.use('/blog',blogRoutes)
 app.use('/',userRouter)
 
-app.listen(3001)
+app.listen(3001||env.PORT)
