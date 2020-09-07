@@ -5,7 +5,7 @@ const auth=(req,res,next)=>{
     }
     else{
        
-        res.redirect('/')
+        res.status(401).json({msg:'unauthorized'})
     }
 }
 module.exports=auth

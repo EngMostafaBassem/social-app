@@ -19,6 +19,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
   }))
+  app.use(express.json())
 
 const connect=mongoose.connect('mongodb://localhost:27017/socialDB', {useNewUrlParser: true,useUnifiedTopology: true });
 connect.then(db=>{
@@ -27,7 +28,7 @@ connect.then(db=>{
 
 /*Mountung Routes */
 
-app.use('/blog',blogRoutes)
-app.use('/',userRouter)
+app.use('/api/v1/blogs',blogRoutes)
+app.use('/api/v1',userRouter)
 
 app.listen(3001||env.PORT)
